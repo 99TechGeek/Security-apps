@@ -1,0 +1,54 @@
+{
+  "domain": "example.com",
+  "summary": {
+    "high": 0,
+    "medium": 2,
+    "low": 1
+  },
+  "findings": [
+    {
+      "type": "Missing Header",
+      "severity": "MEDIUM",
+      "description": "Content-Security-Policy header is not present. Mitigates XSS and data injection attacks.",
+      "recommendation": "Add the Content-Security-Policy HTTP response header with a secure policy."
+    },
+    {
+      "type": "Missing Header",
+      "severity": "MEDIUM",
+      "description": "Strict-Transport-Security header is not present. Forces HTTPS and prevents SSL stripping.",
+      "recommendation": "Add the Strict-Transport-Security HTTP response header with a secure policy."
+    },
+    {
+      "type": "Missing Header",
+      "severity": "LOW",
+      "description": "X-Frame-Options header is not present. Reduces clickjacking risk.",
+      "recommendation": "Add the X-Frame-Options HTTP response header with a secure policy."
+    }
+  ],
+  "evidence": {
+    "http": {
+      "final_url": "http://example.com",
+      "status_code": 403,
+      "headers": {
+        "content-length": "9",
+        "content-type": "text/plain",
+        "date": "Tue, 28 Apr 2026 07:38:09 GMT",
+        "server": "envoy",
+        "connection": "close"
+      }
+    },
+    "dns": {
+      "A": [
+        "104.20.23.154",
+        "172.66.147.243"
+      ],
+      "MX": [],
+      "TXT": []
+    },
+    "tls": {
+      "error": "[Errno 101] Network is unreachable",
+      "expired": null
+    },
+    "technologies": []
+  }
+}
